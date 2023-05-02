@@ -13,14 +13,16 @@ spring:
     password: ${DB_PASSWORD}
   profiles:
     active: prod
-  # Swagger
-  springfox:
-    documentation:
-      swagger:
-        use-model-v3: false
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+
+# Swagger
+springfox:
+  documentation:
+     swagger:
+      use-model-v3: false
+
 # mapper setting
 mybatis:
   type-aliases-package: com.ovtrip.*.model
