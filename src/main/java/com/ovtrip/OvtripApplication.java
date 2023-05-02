@@ -1,4 +1,4 @@
-package com.ssafy.ovtrip;
+package com.ovtrip;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
