@@ -12,9 +12,15 @@
     </resultMap>
 
     <select id="idCheck" parameterType="String" resultType="int">
-        select count(user_id)
+        select count(user_email)
         from users
-        where user_id = #{userid}
+        where user_email = #{userEmail}
     </select>
+
+    <insert id="joinUser" parameterType="userDto">
+        insert into users (user_email, user_password, user_nickname, social_type)
+        values (#{userEmail}, #{userPassword}, #{userNickname}, #{socialType})
+    </insert>
+
 
 </mapper>
