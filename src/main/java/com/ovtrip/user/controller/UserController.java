@@ -20,6 +20,7 @@ public class UserController {
         userDto.setUserEmail(request.getEmail());
         userDto.setUserNickname(request.getNickname());
         userDto.setUserPassword(request.getPassword());
+        userDto.setSocialType("LOCAL");
         userService.joinUser(userDto);
         return new CreateUserResponse(userDto.getUserEmail());
     }
@@ -42,6 +43,5 @@ public class UserController {
     static class CreateUserResponse {
         private String email;
     }
-
 
 }
