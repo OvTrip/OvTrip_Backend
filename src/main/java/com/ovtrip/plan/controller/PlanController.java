@@ -2,6 +2,8 @@ package com.ovtrip.plan.controller;
 
 import com.ovtrip.plan.model.PlanDto;
 import com.ovtrip.plan.service.PlanService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +13,13 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/plan")
 @CrossOrigin
+@Api(tags={"여행계획"})
 public class PlanController {
 
     private final PlanService planService;
 
-    @GetMapping(value = "/view/{planid}")
+    @GetMapping(value = "/{planid}")
+    @ApiOperation(value = "Plan 조회", notes = "해당 일정에 대한 상세 정보를 불러 옵니다.")
     public ResponseEntity<?> planInfo(@PathVariable("planid") int planId){
         try {
             PlanDto planDto = planService.getPlan(planId);

@@ -24,7 +24,7 @@ public class SwaggerConfiguration {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).consumes(getConsumeContentTypes()).produces(getProduceContentTypes())
                 .apiInfo(apiInfo()).groupName(version).select()
-                .apis(RequestHandlerSelectors.basePackage("com.ovtrip.user.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.ovtrip"))
                 .paths(PathSelectors.any())
                 .build();
     }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PlanServiceImpl implements PlanService{
 
-    PlanMapper planMapper;
+    private final PlanMapper planMapper;
 
     @Override
     public PlanDto getPlan(int planId) throws Exception {
