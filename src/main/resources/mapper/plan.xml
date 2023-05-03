@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ovtrip.plan.model.mapper.PlanMapper">
+    <resultMap id="plan" type="PlanDto">
+        <result column="plan_id" property="planId"/>
+        <result column="plan_title" property="planTitle"/>
+        <result column="region" property="region"/>
+        <result column="start_date" property="startDate"/>
+        <result column="end_date" property="endDate"/>
+    </resultMap>
+
+    <resultMap id="course" type="CourseDto">
+        <result column="course_id" property="courseId"/>
+        <result column="place_name" property="placeName"/>
+        <result column="place_url" property="placeUrl"/>
+        <result column="address_name" property="addressName"/>
+        <result column="road_address_name" property="roadAddressName"/>
+        <result column="latitude" property="latitude"/>
+        <result column="longitude" property="longitude"/>
+        <result column="course_date" property="courseDate"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+    </resultMap>
+
+    <resultMap id="participant" type="ParticipantDto">
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+    <resultMap id="planInfo" type="PlanDto" extends="plan">
+        <collection property="courseList" column="plan_id" javaType="list" ofType="CourseDto" select="getCourseList"/>
+        <collection property="participantList" column="plan_id" javaType="list" ofType="ParticipantDto" select="participantList"/>
+    </resultMap>
+
+    <select id="getPlan" parameterType="int" resultMap="planInfo">
+        select plan_id, plan_title, region, start_date, end_date
+        from plan
+        where plan_id = #{planId}
+    </select>
+
+    <select id="getCourseList" resultMap="course">
+        select course_id, place_name, place_url, address_name, road_address_name,
+               latitude, longitude, course_date, start_time, end_time
+        from course
+        where plan_id = #{plan_id}
+    </select>
+
+    <select id="participantList" resultMap="participant">
+        select user_id
+        from participants
+        where plan_id = #{plan_id}
+    </select>
+
+</mapper>
