@@ -11,5 +11,6 @@ public interface UserMapper {
     int idCheck(String userEmail) throws SQLException;
     // 회원가입
     void joinUser(UserDto userDto) throws SQLException;
-
+    // 회원 아이디로 회원 조회
+    UserDto getUserById(int userId) throws SQLException;
 }

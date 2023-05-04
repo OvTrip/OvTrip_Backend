@@ -22,5 +22,10 @@
         values (#{userEmail}, #{userPassword}, #{userNickname}, #{socialType})
     </insert>
 
+    <select id="getUserById" parameterType="int" resultMap="user">
+        select user_id, user_email, user_nickname, social_type
+        from users
+        where user_id = #{userId}
+    </select>
 
 </mapper>
