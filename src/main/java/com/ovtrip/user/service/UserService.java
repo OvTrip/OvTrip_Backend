@@ -1,10 +1,11 @@
 package com.ovtrip.user.service;
 
-import com.ovtrip.user.model.UserDto;
+import com.ovtrip.user.model.dto.UserDto;
+import com.ovtrip.user.model.dto.UserVO;
 
 public interface UserService {
     int idCheck(String userId) throws Exception;
     void joinUser(UserDto userDto) throws Exception;
 
-    UserDto getUserById(int userId) throws Exception;
+    UserVO getUserById(int userId) throws Exception;
 }
