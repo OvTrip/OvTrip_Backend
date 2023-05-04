@@ -1,6 +1,6 @@
 package com.ovtrip.plan.controller;
 
-import com.ovtrip.plan.model.PlanDto;
+import com.ovtrip.plan.model.vo.PlanVo;
 import com.ovtrip.plan.service.PlanService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +22,7 @@ public class PlanController {
     @ApiOperation(value = "Plan 조회", notes = "해당 일정에 대한 상세 정보를 불러 옵니다.")
     public ResponseEntity<?> planInfo(@PathVariable("planid") int planId){
         try {
-            PlanDto planDto = planService.getPlan(planId);
+            PlanVo planDto = planService.getPlan(planId);
             if(planDto != null){
                 return new ResponseEntity<>(planDto, HttpStatus.OK);
             } else{
