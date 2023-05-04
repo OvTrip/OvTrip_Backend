@@ -2,4 +2,4 @@
 
 
 <img src = "./img/swagger1.PNG">
-<img src = "./img/swagger2.PNG">
+<img src = "./img/swagger2.png">
