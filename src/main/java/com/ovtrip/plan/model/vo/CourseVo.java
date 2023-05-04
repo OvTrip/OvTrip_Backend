@@ -1,11 +1,10 @@
-package com.ovtrip.plan.model;
+package com.ovtrip.plan.model.vo;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
-@Setter
-public class CourseDto {
+@AllArgsConstructor     //Create Full Parameter Constructor
+public class CourseVo {
     private int courseId;
     private String courseDate;
     private String startTime;
