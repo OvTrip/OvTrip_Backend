@@ -1,5 +1,6 @@
 package com.ovtrip.user.model.mapper;
 
+import com.ovtrip.user.model.dto.LoginUserDto;
 import com.ovtrip.user.model.dto.UserDto;
 import com.ovtrip.user.model.dto.UserVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,4 +17,6 @@ public interface UserMapper {
     void joinUser(UserDto userDto) throws SQLException;
     // 회원 아이디로 회원 조회
     UserVO getUserById(int userId) throws SQLException;
+    // 로그인
+    UserVO emailLogin(LoginUserDto loginUserDto) throws SQLException;
 }

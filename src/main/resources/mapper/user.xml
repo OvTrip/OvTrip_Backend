@@ -21,4 +21,9 @@
         where user_id = #{userId}
     </select>
 
+    <select id="emailLogin" parameterType="loginUserDto" resultType="UserVo">
+        select user_id, user_email, user_nickname, social_type
+        from users
+        where user_email = #{userEmail} and user_password = #{userPassword} and social_type = #{socialType}
+    </select>
 </mapper>
