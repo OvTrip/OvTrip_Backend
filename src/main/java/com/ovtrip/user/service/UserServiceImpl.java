@@ -1,5 +1,6 @@
 package com.ovtrip.user.service;
 
+import com.ovtrip.user.model.dto.LoginUserDto;
 import com.ovtrip.user.model.dto.UserDto;
 import com.ovtrip.user.model.dto.UserVO;
 import com.ovtrip.user.model.mapper.UserMapper;
@@ -26,6 +27,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO getUserById(int userId) throws Exception {
         return userMapper.getUserById(userId);
+    }
+
+    @Override
+    public UserVO emailLogin(LoginUserDto loginUserDto) throws Exception {
+        return userMapper.emailLogin(loginUserDto);
     }
 
 }
