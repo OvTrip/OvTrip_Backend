@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: /ovtrip
+    context-path: /
 
 spring:
   # .env import
@@ -28,3 +28,15 @@ mybatis:
   type-aliases-package: com.ovtrip.*.model
   mapper-locations: mapper/*.xml
 
+# feign client
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+# log
+logging:
+  level:
+    com.ovtrip: debug
