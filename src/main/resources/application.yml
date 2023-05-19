@@ -1,6 +1,6 @@
 server:
   servlet:
-    context-path: /ovtrip
+    context-path: /
 
 spring:
   # .env import
