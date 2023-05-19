@@ -40,3 +40,9 @@ feign:
 logging:
   level:
     com.ovtrip: debug
+
+# kakao
+kakao:
+  client:
+    id: ${KAKAO_REST_API_KEY}
+    secret: ${KAKAO_SECRET}
