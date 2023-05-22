@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class UserDto {
+    private int userId;
     private String userEmail;
     private String userPassword;
     private String userNickname;
@@ -19,10 +20,12 @@ public class UserDto {
     private LocalDateTime tokenExpirationTime;
 
     @Builder
-    public UserDto(String userEmail, String userPassword, String userNickname, SocialType socialType) {
+    public UserDto(String userEmail, String userPassword, String userNickname, SocialType socialType, String profileImg, Role role) {
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userNickname = userNickname;
         this.socialType = socialType;
+        this.profileImg = profileImg;
+        this.role = role;
     }
 }
