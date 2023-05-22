@@ -1,5 +1,6 @@
 package com.ovtrip.user.service;
 
+import com.ovtrip.user.constant.SocialType;
 import com.ovtrip.user.model.dto.LoginUserDto;
 import com.ovtrip.user.model.dto.UserDto;
 import com.ovtrip.user.model.dto.UserVO;
@@ -20,7 +21,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void joinUser(UserDto userDto) throws Exception {
-        userDto.setSocialType("LOCAL");
+        userDto.setSocialType(SocialType.EMAIL);
         userMapper.joinUser(userDto);
     }
 
