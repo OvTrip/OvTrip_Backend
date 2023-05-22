@@ -17,13 +17,13 @@ public class OAuthLoginController {
 
     private final OAuthValidator oauthValidator;
     private final OAuthLoginService oauthLoginService;
-    @PostMapping("/login")
-    public ResponseEntity<OAuthLoginDto.Response> oauthLogin(@RequestBody OAuthLoginDto.Request oauthLoginRequest, HttpServletRequest httpServletRequest) {
+    @PostMapping("/login/{socialType}")
+    public ResponseEntity<OAuthLoginDto.Response> oauthLogin(@PathVariable String socialType, HttpServletRequest httpServletRequest) {
         String authorizationHeader = httpServletRequest.getHeader("Authorization");
         oauthValidator.validateAuthorization(authorizationHeader);
-        oauthValidator.validateMemberType(oauthLoginRequest.getSocialType());
+        oauthValidator.validateSocialType(socialType.toUpperCase());
         String accessToken = authorizationHeader.split(" ")[1];
-        OAuthLoginDto.Response jwtTokenResponseDto = oauthLoginService.oauthLogin(accessToken, SocialType.from(oauthLoginRequest.getSocialType()));
+        OAuthLoginDto.Response jwtTokenResponseDto = oauthLoginService.oauthLogin(accessToken, SocialType.from(socialType));
         return ResponseEntity.ok(jwtTokenResponseDto);
     }
 }
