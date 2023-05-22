@@ -10,9 +10,9 @@
         where user_email = #{userEmail}
     </select>
 
-    <insert id="joinUser" parameterType="userDto">
-        insert into users (user_email, user_password, user_nickname, social_type)
-        values (#{userEmail}, #{userPassword}, #{userNickname}, #{socialType})
+    <insert id="joinUser" parameterType="userDto" useGeneratedKeys="true" keyProperty="userId">
+        insert into users (user_email, user_password, user_nickname, social_type,role, profile_img, reg_time, mod_time)
+        values (#{userEmail}, #{userPassword}, #{userNickname}, #{socialType}, #{role}, #{profileImg}, now(), now())
     </insert>
 
     <select id="getUserById" parameterType="int" resultType="UserVo">
@@ -21,9 +21,21 @@
         where user_id = #{userId}
     </select>
 
+    <select id="getUserByEmail" parameterType="String" resultType="UserVo">
+        select user_id, user_email, user_nickname, social_type, role, profile_img, reg_time, mod_time, refresh_token, token_expiration_time
+        from users
+        where user_email = #{userEmail}
+    </select>
+
     <select id="emailLogin" parameterType="loginUserDto" resultType="UserVo">
         select user_id, user_email, user_nickname, social_type
         from users
         where user_email = #{userEmail} and user_password = #{userPassword} and social_type = #{socialType}
     </select>
+
+    <update id="updateRefreshToken" parameterType="com.ovtrip.global.jwt.dto.RefreshTokenDto">
+        update users
+        set refresh_token = #{refreshToken}, token_expiration_time = #{refreshTokenExpireTime}, mod_time = now()
+        where user_id = #{userId};
+    </update>
 </mapper>
