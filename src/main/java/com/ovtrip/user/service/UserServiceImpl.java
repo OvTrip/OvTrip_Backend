@@ -6,16 +6,14 @@ import com.ovtrip.global.error.exception.BusinessException;
 import com.ovtrip.global.error.exception.EntityNotFoundException;
 import com.ovtrip.global.jwt.dto.RefreshTokenDto;
 import com.ovtrip.user.constant.SocialType;
-import com.ovtrip.user.model.dto.LoginUserDto;
-import com.ovtrip.user.model.dto.SocialLoginUserDto;
-import com.ovtrip.user.model.dto.UserDto;
-import com.ovtrip.user.model.dto.UserVO;
+import com.ovtrip.user.model.dto.*;
 import com.ovtrip.user.model.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -101,5 +99,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO getUserByEmailandSocialType(SocialLoginUserDto socialLoginUserDto) {
         return userMapper.getUserByEmailandSocialType(socialLoginUserDto);
+    }
+
+    @Override
+    public List<SearchUserDto> searchUserByName(String keyword) {
+        return userMapper.searchUserByName(keyword);
     }
 }

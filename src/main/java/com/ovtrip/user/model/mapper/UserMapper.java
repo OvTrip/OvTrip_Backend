@@ -1,14 +1,12 @@
 package com.ovtrip.user.model.mapper;
 
 import com.ovtrip.global.jwt.dto.RefreshTokenDto;
-import com.ovtrip.user.model.dto.LoginUserDto;
-import com.ovtrip.user.model.dto.SocialLoginUserDto;
-import com.ovtrip.user.model.dto.UserDto;
-import com.ovtrip.user.model.dto.UserVO;
+import com.ovtrip.user.model.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Mapper
 @Repository
@@ -28,4 +26,5 @@ public interface UserMapper {
     UserVO getUserByRefreshToken(String refreshToken);
     void expireRefreshToken(Long userId);
     UserVO getUserByEmailandSocialType(SocialLoginUserDto socialLoginUserDto);
+    List<SearchUserDto> searchUserByName(String keyword);
 }

@@ -2,6 +2,7 @@ package com.ovtrip.user.controller;
 
 import com.ovtrip.global.jwt.service.TokenManager;
 import com.ovtrip.user.model.dto.LoginUserDto;
+import com.ovtrip.user.model.dto.SearchUserDto;
 import com.ovtrip.user.model.dto.UserDto;
 import com.ovtrip.user.model.dto.UserVO;
 import com.ovtrip.user.service.UserService;
@@ -12,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -51,5 +54,11 @@ public class UserController {
         Long userId = Long.valueOf((Integer) tokenClaims.get("userId"));
         UserVO userVo = userService.getUserById(userId);
         return ResponseEntity.ok(userVo);
+    }
+
+    @GetMapping("/user/search")
+    public ResponseEntity<?> searchUserByEmail(String keyword){
+        List<SearchUserDto> searchUserList = userService.searchUserByName(keyword);
+        return ResponseEntity.ok(searchUserList);
     }
 }

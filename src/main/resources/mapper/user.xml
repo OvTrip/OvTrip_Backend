@@ -57,4 +57,10 @@
         where user_id = #{userId};
     </update>
 
+    <select id="searchUserByName" parameterType="String" resultType="SearchUserDto">
+        select user_id, user_email, user_nickname, profile_img
+        from users
+        where user_nickname like concat('%',#{keyword},'%')
+    </select>
+
 </mapper>
