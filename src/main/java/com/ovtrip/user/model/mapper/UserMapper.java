@@ -2,6 +2,7 @@ package com.ovtrip.user.model.mapper;
 
 import com.ovtrip.global.jwt.dto.RefreshTokenDto;
 import com.ovtrip.user.model.dto.LoginUserDto;
+import com.ovtrip.user.model.dto.SocialLoginUserDto;
 import com.ovtrip.user.model.dto.UserDto;
 import com.ovtrip.user.model.dto.UserVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -25,6 +26,6 @@ public interface UserMapper {
     // token set
     void updateRefreshToken(RefreshTokenDto refreshTokenDto) throws SQLException;
     UserVO getUserByRefreshToken(String refreshToken);
-
     void expireRefreshToken(Long userId);
+    UserVO getUserByEmailandSocialType(SocialLoginUserDto socialLoginUserDto);
 }

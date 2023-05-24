@@ -10,6 +10,7 @@ import com.ovtrip.global.util.DateTimeUtils;
 import com.ovtrip.login.dto.OAuthLoginDto;
 import com.ovtrip.user.constant.Role;
 import com.ovtrip.user.constant.SocialType;
+import com.ovtrip.user.model.dto.SocialLoginUserDto;
 import com.ovtrip.user.model.dto.UserDto;
 import com.ovtrip.user.model.dto.UserVO;
 import com.ovtrip.user.service.UserService;
@@ -32,8 +33,12 @@ public class OAuthLoginService {
         OAuthAttributes userInfo = socialLoginApiService.getUserInfo(accessToken);
         log.info("userinfo : {}", userInfo);
         JwtTokenDto jwtTokenDto;
+        SocialLoginUserDto socialLoginUserDto = SocialLoginUserDto.builder()
+                .email(userInfo.getEmail())
+                .socialType(socialType)
+                .build();
         try {
-            UserVO userVO = userService.getUserByEmail(userInfo.getEmail());
+            UserVO userVO = userService.getUserByEmailandSocialType(socialLoginUserDto);
             if (userVO == null){
                 // 신규 회원인 경우
                 UserDto oauthUser = userInfo.toUserDto(socialType, Role.USER);

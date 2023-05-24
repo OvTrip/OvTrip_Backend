@@ -27,6 +27,12 @@
         where user_email = #{userEmail}
     </select>
 
+    <select id="getUserByEmailandSocialType" parameterType="com.ovtrip.user.model.dto.SocialLoginUserDto" resultType="UserVo">
+        select user_id, user_email, user_nickname, social_type, role, profile_img, reg_time, mod_time, refresh_token, token_expiration_time
+        from users
+        where user_email = #{email} and social_type = #{socialType}
+    </select>
+
     <select id="getUserByRefreshToken" parameterType="String" resultType="UserVo">
         select user_id, user_email, user_nickname, social_type, role, profile_img, reg_time, mod_time, refresh_token, token_expiration_time
         from users

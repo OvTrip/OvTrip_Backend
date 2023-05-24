@@ -2,6 +2,7 @@ package com.ovtrip.user.service;
 
 import com.ovtrip.global.jwt.dto.RefreshTokenDto;
 import com.ovtrip.user.model.dto.LoginUserDto;
+import com.ovtrip.user.model.dto.SocialLoginUserDto;
 import com.ovtrip.user.model.dto.UserDto;
 import com.ovtrip.user.model.dto.UserVO;
 
@@ -22,4 +23,6 @@ public interface UserService {
     UserVO getUserByRefreshToken(String refreshToken);
 
     void expireRefreshToken(Long userId);
+
+    UserVO getUserByEmailandSocialType(SocialLoginUserDto socialLoginUserDto);
 }

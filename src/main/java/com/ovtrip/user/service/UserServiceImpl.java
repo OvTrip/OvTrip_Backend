@@ -7,6 +7,7 @@ import com.ovtrip.global.error.exception.EntityNotFoundException;
 import com.ovtrip.global.jwt.dto.RefreshTokenDto;
 import com.ovtrip.user.constant.SocialType;
 import com.ovtrip.user.model.dto.LoginUserDto;
+import com.ovtrip.user.model.dto.SocialLoginUserDto;
 import com.ovtrip.user.model.dto.UserDto;
 import com.ovtrip.user.model.dto.UserVO;
 import com.ovtrip.user.model.mapper.UserMapper;
@@ -95,5 +96,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void expireRefreshToken(Long userId) {
         userMapper.expireRefreshToken(userId);
+    }
+
+    @Override
+    public UserVO getUserByEmailandSocialType(SocialLoginUserDto socialLoginUserDto) {
+        return userMapper.getUserByEmailandSocialType(socialLoginUserDto);
     }
 }
