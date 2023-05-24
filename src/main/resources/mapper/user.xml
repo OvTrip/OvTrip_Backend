@@ -44,4 +44,11 @@
         set refresh_token = #{refreshToken}, token_expiration_time = #{refreshTokenExpireTime}, mod_time = now()
         where user_id = #{userId};
     </update>
+
+    <update id="expireRefreshToken" parameterType="Long">
+        update users
+        set token_expiration_time = now(), mod_time = now()
+        where user_id = #{userId};
+    </update>
+
 </mapper>

@@ -3,6 +3,7 @@ package com.ovtrip.user.service;
 import com.ovtrip.global.error.ErrorCode;
 import com.ovtrip.global.error.exception.AuthenticationException;
 import com.ovtrip.global.error.exception.BusinessException;
+import com.ovtrip.global.error.exception.EntityNotFoundException;
 import com.ovtrip.global.jwt.dto.RefreshTokenDto;
 import com.ovtrip.user.constant.SocialType;
 import com.ovtrip.user.model.dto.LoginUserDto;
@@ -34,12 +35,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserVO getUserById(Long userId) throws Exception {
-        return userMapper.getUserById(userId);
+        UserVO userVO = userMapper.getUserById(userId);
+        if (userVO == null){
+            throw new EntityNotFoundException(ErrorCode.MEMBER_NOT_EXIST);
+        }
+        return userVO;
     }
 
     @Override
     public UserVO emailLogin(LoginUserDto loginUserDto) throws Exception {
-        return userMapper.emailLogin(loginUserDto);
+        UserVO userVO = userMapper.emailLogin(loginUserDto);
+        if (userVO == null){
+            throw new EntityNotFoundException(ErrorCode.MEMBER_NOT_EXIST);
+        }
+        return userVO;
     }
 
     @Override
@@ -58,7 +67,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserVO getUserByEmail(String userEmail) throws Exception {
-        return userMapper.getUserByEmail(userEmail);
+        UserVO userVO = userMapper.getUserByEmail(userEmail);
+        if (userVO == null){
+            throw new EntityNotFoundException(ErrorCode.MEMBER_NOT_EXIST);
+        }
+        return userVO;
     }
 
     @Override
@@ -77,5 +90,10 @@ public class UserServiceImpl implements UserService {
             throw new AuthenticationException(ErrorCode.REFRESH_TOKEN_EXPIRED);
         }
         return userVO;
+    }
+
+    @Override
+    public void expireRefreshToken(Long userId) {
+        userMapper.expireRefreshToken(userId);
     }
 }

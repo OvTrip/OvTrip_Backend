@@ -20,4 +20,6 @@ public interface UserService {
     void updateRefreshToken(RefreshTokenDto refreshTokenDto) throws Exception;
 
     UserVO getUserByRefreshToken(String refreshToken);
+
+    void expireRefreshToken(Long userId);
 }

@@ -25,4 +25,6 @@ public interface UserMapper {
     // token set
     void updateRefreshToken(RefreshTokenDto refreshTokenDto) throws SQLException;
     UserVO getUserByRefreshToken(String refreshToken);
+
+    void expireRefreshToken(Long userId);
 }
