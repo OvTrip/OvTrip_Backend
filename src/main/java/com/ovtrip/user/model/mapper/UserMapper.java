@@ -24,4 +24,5 @@ public interface UserMapper {
     UserVO emailLogin(LoginUserDto loginUserDto) throws SQLException;
     // token set
     void updateRefreshToken(RefreshTokenDto refreshTokenDto) throws SQLException;
+    UserVO getUserByRefreshToken(String refreshToken);
 }

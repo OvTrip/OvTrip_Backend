@@ -1,6 +1,7 @@
 package com.ovtrip.user.service;
 
 import com.ovtrip.global.error.ErrorCode;
+import com.ovtrip.global.error.exception.AuthenticationException;
 import com.ovtrip.global.error.exception.BusinessException;
 import com.ovtrip.global.jwt.dto.RefreshTokenDto;
 import com.ovtrip.user.constant.SocialType;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -66,6 +68,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserVO getUserByRefreshToken(String refreshToken) {
-        return null;
+        UserVO userVO = userMapper.getUserByRefreshToken(refreshToken);
+        if (userVO == null) {
+            throw new AuthenticationException(ErrorCode.REFRESH_TOKEN_NOT_FOUND);
+        }
+        LocalDateTime tokenExpirationTime = userVO.getTokenExpirationTime();
+        if (tokenExpirationTime.isBefore(LocalDateTime.now())){
+            throw new AuthenticationException(ErrorCode.REFRESH_TOKEN_EXPIRED);
+        }
+        return userVO;
     }
 }
