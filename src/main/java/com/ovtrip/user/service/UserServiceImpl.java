@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserVO getUserById(int userId) throws Exception {
+    public UserVO getUserById(Long userId) throws Exception {
         return userMapper.getUserById(userId);
     }
 
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int registerUser(UserDto userDto) throws Exception {
+    public Long registerUser(UserDto userDto) throws Exception {
         userMapper.joinUser(userDto);
         return userDto.getUserId();
     }
@@ -62,5 +62,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateRefreshToken(RefreshTokenDto refreshTokenDto) throws Exception {
         userMapper.updateRefreshToken(refreshTokenDto);
+    }
+
+    @Override
+    public UserVO getUserByRefreshToken(String refreshToken) {
+        return null;
     }
 }

@@ -15,7 +15,7 @@
         values (#{userEmail}, #{userPassword}, #{userNickname}, #{socialType}, #{role}, #{profileImg}, now(), now())
     </insert>
 
-    <select id="getUserById" parameterType="int" resultType="UserVo">
+    <select id="getUserById" parameterType="Long" resultType="UserVo">
         select user_id, user_email, user_nickname, social_type,role, profile_img, reg_time, mod_time, refresh_token, token_expiration_time
         from users
         where user_id = #{userId}

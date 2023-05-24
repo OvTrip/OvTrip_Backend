@@ -48,7 +48,7 @@ public class UserController {
     public ResponseEntity<?> getUserInfo(@RequestHeader("Authorization") String authorizationHeader) throws Exception {
         String accessToken = authorizationHeader.split(" ")[1];
         Claims tokenClaims = tokenManager.getTokenClaims(accessToken);
-        int userId = (Integer) tokenClaims.get("memberId");
+        Long userId = Long.valueOf((Integer) tokenClaims.get("userId"));
         UserVO userVo = userService.getUserById(userId);
         return ResponseEntity.ok(userVo);
     }

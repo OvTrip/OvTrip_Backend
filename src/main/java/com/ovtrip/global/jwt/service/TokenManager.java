@@ -26,11 +26,11 @@ public class TokenManager {
     private final String refreshTokenExpirationTime;
     private final String tokenSecret;
 
-    public JwtTokenDto createJwtTokenDto(Long memberId, Role role) {
+    public JwtTokenDto createJwtTokenDto(Long userId, Role role) {
         Date accessTokenExpireTime = createAccessTokenExpireTime();
         Date refreshTokenExpireTime = createRefreshTokenExpireTime();
-        String accessToken = createAccessToken(memberId, role, accessTokenExpireTime);
-        String refreshToken = createRefreshToken(memberId, refreshTokenExpireTime);
+        String accessToken = createAccessToken(userId, role, accessTokenExpireTime);
+        String refreshToken = createRefreshToken(userId, refreshTokenExpireTime);
         return JwtTokenDto.builder()
                 .grantType(GrantType.BEARER.getType())
                 .accessToken(accessToken)
@@ -48,12 +48,12 @@ public class TokenManager {
         return new Date(System.currentTimeMillis() + Long.parseLong(refreshTokenExpirationTime));
     }
 
-    public String createAccessToken(Long memberId, Role role, Date expirationTime) {
+    public String createAccessToken(Long userId, Role role, Date expirationTime) {
         String accessToken = Jwts.builder()
                 .setSubject(TokenType.ACCESS.name())
                 .setIssuedAt(new Date())
                 .setExpiration(expirationTime)
-                .claim("memberId", memberId)
+                .claim("userId", userId)
                 .claim("role", role)
                 .signWith(SignatureAlgorithm.HS512, tokenSecret.getBytes(StandardCharsets.UTF_8))
                 .setHeaderParam("typ", "JWT")
@@ -61,12 +61,12 @@ public class TokenManager {
         return accessToken;
     }
 
-    public String createRefreshToken(Long memberId, Date expirationTime) {
+    public String createRefreshToken(Long userId, Date expirationTime) {
         String refreshToken = Jwts.builder()
                 .setSubject(TokenType.REFRESH.name())
                 .setIssuedAt(new Date())
                 .setExpiration(expirationTime)
-                .claim("memberId", memberId)
+                .claim("userId", userId)
                 .signWith(SignatureAlgorithm.HS512, tokenSecret.getBytes(StandardCharsets.UTF_8))
                 .setHeaderParam("typ", "JWT")
                 .compact();

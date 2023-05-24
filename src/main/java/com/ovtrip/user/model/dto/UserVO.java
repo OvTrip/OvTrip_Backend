@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 public class UserVO {
-    private int userId;
+    private Long userId;
     private String userEmail;
     private String userNickname;
     private SocialType socialType;
@@ -20,7 +20,7 @@ public class UserVO {
     private LocalDateTime tokenExpirationTime;
 
     @Builder
-    public UserVO(int userId, String userEmail, String userNickname, SocialType socialType, Role role, String profileImg, LocalDateTime regTime, LocalDateTime modTime, String refreshToken, LocalDateTime tokenExpirationTime) {
+    public UserVO(Long userId, String userEmail, String userNickname, SocialType socialType, Role role, String profileImg, LocalDateTime regTime, LocalDateTime modTime, String refreshToken, LocalDateTime tokenExpirationTime) {
         this.userId = userId;
         this.userEmail = userEmail;
         this.userNickname = userNickname;

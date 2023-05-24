@@ -18,8 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-
 @Slf4j
 @Service
 @Transactional
@@ -39,8 +37,8 @@ public class OAuthLoginService {
             if (userVO == null){
                 // 신규 회원인 경우
                 UserDto oauthUser = userInfo.toUserDto(socialType, Role.USER);
-                int userId = userService.registerUser(oauthUser);
-                jwtTokenDto = tokenManager.createJwtTokenDto(Long.valueOf(userId), oauthUser.getRole());
+                Long userId = userService.registerUser(oauthUser);
+                jwtTokenDto = tokenManager.createJwtTokenDto(userId, oauthUser.getRole());
                 RefreshTokenDto refreshTokenDto = RefreshTokenDto.builder()
                         .userId(userId)
                         .refreshToken(jwtTokenDto.getRefreshToken())
@@ -49,7 +47,7 @@ public class OAuthLoginService {
                 userService.updateRefreshToken(refreshTokenDto);
             } else {
                 // 가입된 회원의 경우
-                jwtTokenDto = tokenManager.createJwtTokenDto(Long.valueOf(userVO.getUserId()), userVO.getRole());
+                jwtTokenDto = tokenManager.createJwtTokenDto(userVO.getUserId(), userVO.getRole());
                 RefreshTokenDto refreshTokenDto = RefreshTokenDto.builder()
                         .userId(userVO.getUserId())
                         .refreshToken(jwtTokenDto.getRefreshToken())
