@@ -51,7 +51,7 @@ public class OAuthLoginService {
                 RefreshTokenDto refreshTokenDto = RefreshTokenDto.builder()
                         .userId(userVO.getUserId())
                         .refreshToken(jwtTokenDto.getRefreshToken())
-                        .refreshTokenExpireTime(DateTimeUtils.convertToLocalDateTime(jwtTokenDto.getAccessTokenExpireTime()))
+                        .refreshTokenExpireTime(DateTimeUtils.convertToLocalDateTime(jwtTokenDto.getRefreshTokenExpireTime()))
                         .build();
                 userService.updateRefreshToken(refreshTokenDto);
             }
