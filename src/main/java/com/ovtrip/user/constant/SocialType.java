@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public enum SocialType {
-    EMAIL, KAKAO;
+    EMAIL, KAKAO, NAVER;
 
     public static SocialType from(String type) {
         return SocialType.valueOf(type.toUpperCase());

@@ -52,3 +52,8 @@ token:
   secret: ${JWT_SECRET} # 임의의 문자열
   access-token-expiration-time: 900000 # 15분 1000(ms) x 60(s) x 15(m)
   refresh-token-expiration-time: 1209600000 # 2주 1000(ms) x 60 (s) x 60(m) x 24(h) x 14(d)
+
+naver:
+  client:
+    id: ${NAVER_CLIENT_ID}
+    secret: ${NAVER_CLIENT_SECRET}

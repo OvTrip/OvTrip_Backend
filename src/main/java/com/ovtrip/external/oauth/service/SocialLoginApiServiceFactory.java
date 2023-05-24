@@ -17,6 +17,8 @@ public class SocialLoginApiServiceFactory {
         String socialLoginApiServiceBeanName = "";
         if (SocialType.KAKAO.equals(socialType)){
             socialLoginApiServiceBeanName = "kakaoLoginApiServiceImpl";
+        } else if (SocialType.NAVER.equals(socialType)) {
+            socialLoginApiServiceBeanName = "naverLoginApiServiceImpl";
         }
         return socialLoginApiServices.get(socialLoginApiServiceBeanName);
     }
