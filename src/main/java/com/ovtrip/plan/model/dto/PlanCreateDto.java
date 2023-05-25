@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor     //Create Full Parameter Constructor
 public class PlanCreateDto {
     private int planId;
-    private String userId;
+    private Long userId;
     private String startDate;
     private String endDate;
     private String region;

@@ -33,12 +33,9 @@
         where plan_id = #{plan_id}
     </select>
 
-    <insert id="createPlan" parameterType="planCreateDto">
+    <insert id="createPlan" parameterType="planCreateDto" useGeneratedKeys="true" keyProperty="planId">
         insert into plan (user_id, start_date, end_date, region, reg_time)
         values (#{userId}, #{startDate}, #{endDate}, #{region}, now())
-        <selectKey resultType="int" keyProperty="planId" order="AFTER">
-            select last_insert_id()
-        </selectKey>
     </insert>
 
 </mapper>

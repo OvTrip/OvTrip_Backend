@@ -1,5 +1,7 @@
 package com.ovtrip.plan.controller;
 
+import com.ovtrip.global.resolver.userinfo.UserInfo;
+import com.ovtrip.global.resolver.userinfo.UserInfoDto;
 import com.ovtrip.plan.model.dto.PlanCreateDto;
 import com.ovtrip.plan.model.vo.PlanVo;
 import com.ovtrip.plan.service.PlanService;
@@ -38,6 +40,7 @@ public class PlanController {
     @ApiOperation(value="Plan 생성", notes = "새로운 일정을 생성합니다.")
     public ResponseEntity<?> createPlan(@RequestBody PlanCreateDto planCreateDto){
         try {
+//            planCreateDto.setUserId(userInfoDto.getUserId());
             int planId = planService.createPlan(planCreateDto);
             return new ResponseEntity<>(planId, HttpStatus.OK);
         } catch (Exception e){
