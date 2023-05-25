@@ -1,5 +1,6 @@
 package com.ovtrip.plan.controller;
 
+import com.ovtrip.plan.model.dto.PlanCreateDto;
 import com.ovtrip.plan.model.vo.PlanVo;
 import com.ovtrip.plan.service.PlanService;
 import io.swagger.annotations.Api;
@@ -28,6 +29,17 @@ public class PlanController {
             } else{
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
+        } catch (Exception e){
+            return exceptionHandling(e);
+        }
+    }
+
+    @PostMapping(value="/")
+    @ApiOperation(value="Plan 생성", notes = "새로운 일정을 생성합니다.")
+    public ResponseEntity<?> createPlan(@RequestBody PlanCreateDto planCreateDto){
+        try {
+            int planId = planService.createPlan(planCreateDto);
+            return new ResponseEntity<>(planId, HttpStatus.OK);
         } catch (Exception e){
             return exceptionHandling(e);
         }

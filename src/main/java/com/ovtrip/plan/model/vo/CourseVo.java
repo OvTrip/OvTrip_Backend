@@ -5,15 +5,15 @@ import lombok.*;
 @Getter
 @AllArgsConstructor     //Create Full Parameter Constructor
 public class CourseVo {
-    private int courseId;
-    private String courseDate;
-    private String startTime;
-    private String endTime;
-    private String placeName;
-    private String placeUrl;
-    private String addressName;     //지번 주소 -> default
-    private String roadAddressName; //도로명 주소 -> 지번주소 없을 시 도로명 주소
-    private String latitude;
-    private String longitude;
+    private final int courseId;
+    private final String courseDate;
+    private final String startTime;
+    private final String endTime;
+    private final String placeName;
+    private final String placeUrl;
+    private final String addressName;     //지번 주소 -> default
+    private final String roadAddressName; //도로명 주소 -> 지번주소 없을 시 도로명 주소
+    private final String latitude;
+    private final String longitude;
 
 }

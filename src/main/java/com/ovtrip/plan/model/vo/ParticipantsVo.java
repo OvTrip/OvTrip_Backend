@@ -5,5 +5,5 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 public class ParticipantsVo {
-    int userId;
+    private final int userId;
 }

@@ -6,14 +6,13 @@ import java.util.List;
 
 @Getter
 @ToString
-@NoArgsConstructor      //Create Defalut Constructor
 @AllArgsConstructor     //Create Full Parameter Constructor
 public class PlanVo {
-    private int planId;
-    String planTitle;
-    String startDate;
-    String endDate;
-    String region;
-    List<CourseVo> courseList;
-    List<ParticipantsVo> participantList;
+    private final int planId;
+    private final String planTitle;
+    private final String startDate;
+    private final String endDate;
+    private final String region;
+    private final List<CourseVo> courseList;
+    private final List<ParticipantsVo> participantList;
 }
