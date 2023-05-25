@@ -37,9 +37,11 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authenticationIntercepter)
                 .order(1)
-                .addPathPatterns("/**")
+                .addPathPatterns("/user/**")
                 .excludePathPatterns("/oauth/**", "/access-token/issue",
-                        "/auth/user/**");
+                        "/auth/user/**", "/v2/api-docs",  "/configuration/ui",
+                        "/swagger-resources", "/configuration/security",
+                        "/swagger-ui.html", "/webjars/**","/swagger/**");
     }
 
     @Override

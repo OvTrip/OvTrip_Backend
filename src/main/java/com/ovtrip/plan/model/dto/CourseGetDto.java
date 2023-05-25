@@ -9,10 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor      //Create Defalut Constructor
 @AllArgsConstructor     //Create Full Parameter Constructor
-public class PlanCreateDto {
-    private int planId;
-    private Long userId;
-    private String startDate;
-    private String endDate;
-    private String region;
+public class CourseGetDto {
+    private Long PlanId;
+    private String courseDate;
 }
