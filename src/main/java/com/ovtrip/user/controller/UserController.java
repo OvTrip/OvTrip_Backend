@@ -1,12 +1,13 @@
 package com.ovtrip.user.controller;
 
 import com.ovtrip.global.jwt.service.TokenManager;
+import com.ovtrip.global.resolver.userinfo.UserInfo;
+import com.ovtrip.global.resolver.userinfo.UserInfoDto;
 import com.ovtrip.user.model.dto.LoginUserDto;
 import com.ovtrip.user.model.dto.SearchUserDto;
 import com.ovtrip.user.model.dto.UserDto;
 import com.ovtrip.user.model.dto.UserVO;
 import com.ovtrip.user.service.UserService;
-import io.jsonwebtoken.Claims;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -48,10 +49,8 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public ResponseEntity<?> getUserInfo(@RequestHeader("Authorization") String authorizationHeader) throws Exception {
-        String accessToken = authorizationHeader.split(" ")[1];
-        Claims tokenClaims = tokenManager.getTokenClaims(accessToken);
-        Long userId = Long.valueOf((Integer) tokenClaims.get("userId"));
+    public ResponseEntity<?> getUserInfo(@UserInfo UserInfoDto userInfoDto) throws Exception {
+        Long userId = userInfoDto.getUserId();
         UserVO userVo = userService.getUserById(userId);
         return ResponseEntity.ok(userVo);
     }
