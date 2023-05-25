@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ovtrip.plan.model.mapper.PlanMapper">
+
+    <resultMap id="plan" type="PlanVo">
+        <result column="plan_id" property="planId"/>
+        <result column="plan_title" property="planTitle"/>
+        <result column="region" property="region"/>
+        <result column="start_date" property="startDate"/>
+        <result column="end_date" property="endDate"/>
+        <collection property="courseList" column="plan_id" javaType="list" ofType="CourseDto" select="getCourseList"/>
+        <collection property="participantList" column="plan_id" javaType="list" ofType="ParticipantDto" select="participantList"/>
+    </resultMap>
+
+    <select id="getPlan" parameterType="int" resultMap="plan">
+        select plan_id, plan_title, region, start_date, end_date
+        from plan
+        where plan_id = #{planId}
+    </select>
+
+    <select id="getCourseList" resultType="courseVo">
+        select course_id, place_name, place_url, address_name, road_address_name,
+               latitude, longitude, course_date, start_time, end_time
+        from course
+        where plan_id = #{plan_id}
+    </select>
+
+    <select id="participantList" resultType="participantsVo">
+        select user_id
+        from participants
+        where plan_id = #{plan_id}
+    </select>
+
+    <insert id="createPlan" parameterType="planCreateDto">
+        insert into plan (user_id, start_date, end_date, region, reg_time)
+        values (#{userId}, #{startDate}, #{endDate}, #{region}, now())
+        <selectKey resultType="int" keyProperty="planId" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+</mapper>
