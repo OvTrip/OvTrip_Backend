@@ -39,9 +39,9 @@
     </insert>
 
     <insert id="createCourse" parameterType="courseCreateDto">
-        insert into (plan_id, course_date, start_time, end_time, place_name, place_url, address_name, road_address_name, latitude, longitude)
-        values (#{planId}, #{courseDate}, #{startTime}, #{endTime}, #{placeName}, #{placeUrl}, #{addressName}, #{roadAddressName}, #{latitude}, #{longitude})
-        ON DUPLICATE KEY UPDATE course_id =#{courseId};
+        insert into course (plan_id, course_date, place_name, place_url, address_name, road_address_name, latitude, longitude)
+        values (#{planId}, #{courseDate}, #{placeName}, #{placeUrl}, #{addressName}, #{roadAddressName}, #{latitude}, #{longitude})
+        ON DUPLICATE KEY UPDATE course_id =#{courseId}
     </insert>
 
     <select id="getCourse" parameterType="courseGetDto" resultType="courseVo">

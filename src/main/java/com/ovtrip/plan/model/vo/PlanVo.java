@@ -10,9 +10,9 @@ import java.util.List;
 public class PlanVo {
     private final int planId;
     private final String planTitle;
+    private final String region;
     private final String startDate;
     private final String endDate;
-    private final String region;
-    private final List<CourseVo> courseList;
-    private final List<ParticipantsVo> participantList;
+//    private final List<CourseVo> courseList;
+//    private final List<ParticipantsVo> participantList;
 }

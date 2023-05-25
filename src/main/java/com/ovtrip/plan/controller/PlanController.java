@@ -5,6 +5,7 @@ import com.ovtrip.global.resolver.userinfo.UserInfoDto;
 import com.ovtrip.plan.model.dto.CourseCreateDto;
 import com.ovtrip.plan.model.dto.CourseGetDto;
 import com.ovtrip.plan.model.dto.PlanCreateDto;
+import com.ovtrip.plan.model.dto.PlanDto;
 import com.ovtrip.plan.model.vo.CourseVo;
 import com.ovtrip.plan.model.vo.PlanVo;
 import com.ovtrip.plan.service.PlanService;
@@ -43,9 +44,9 @@ public class PlanController {
 
     @PostMapping
     @ApiOperation(value="Plan 생성", notes = "새로운 일정을 생성합니다.")
-    public ResponseEntity<?> createPlan(@RequestBody PlanCreateDto planCreateDto){
+    public ResponseEntity<?> createPlan(@RequestBody PlanCreateDto planCreateDto, @UserInfo UserInfoDto userInfoDto){
         try {
-//            planCreateDto.setUserId(userInfoDto.getUserId());
+            planCreateDto.setUserId(userInfoDto.getUserId());
             int planId = planService.createPlan(planCreateDto);
             return new ResponseEntity<>(planId, HttpStatus.OK);
         } catch (Exception e){
@@ -53,11 +54,31 @@ public class PlanController {
         }
     }
 
-    @PostMapping(value="course")
+    private String course_date;
+    private String place_name;
+    private String place_url;
+    private String address_name;
+    private String road_address_name;
+    private String latitude;
+    private String longitude;
+    @PostMapping(value="/{planId}/course")
     @ApiOperation(value = "Course 생성", notes="날짜별 일정을 저장합니다.")
-    public ResponseEntity<?> createCourse(@RequestBody CourseCreateDto courseCreateDto){
+    public ResponseEntity<?> createCourse(@PathVariable Long planId, @RequestBody PlanDto planDto){
         try {
-            planService.createCourse(courseCreateDto);
+            System.out.println("됨");
+            for (int i=0;i < planDto.getVisitList().size();i++){
+                CourseCreateDto courseCreateDto = CourseCreateDto.builder()
+                        .planId(planId)
+                        .courseDate(planDto.getVisitList().get(i).getCourse_date())
+                        .addressName(planDto.getVisitList().get(i).getAddress_name())
+                        .roadAddressName(planDto.getVisitList().get(i).getRoad_address_name())
+                        .placeName(planDto.getVisitList().get(i).getPlace_name())
+                        .placeUrl(planDto.getVisitList().get(i).getPlace_url())
+                        .latitude(planDto.getVisitList().get(i).getLatitude())
+                        .longitude(planDto.getVisitList().get(i).getLongitude())
+                        .build();
+                planService.createCourse(courseCreateDto);
+            }
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return exceptionHandling(e);
