@@ -17,4 +17,6 @@ public interface PlanMapper {
     void createPlan(PlanCreateDto planCreateDto) throws SQLException;
     List<CourseVo> getCourse(CourseGetDto courseGetDto) throws SQLException;
     void createCourse(CourseCreateDto courseCreateDto) throws  SQLException;
+
+    List<PlanVo> getPlanByUser(Long userId);
 }

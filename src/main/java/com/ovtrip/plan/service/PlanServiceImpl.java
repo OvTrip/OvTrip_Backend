@@ -48,4 +48,8 @@ public class PlanServiceImpl implements PlanService{
         return planMapper.getCourse(courseGetDto);
     }
 
+    @Override
+    public List<PlanVo> getPlanByUser(Long userId) {
+        return planMapper.getPlanByUser(userId);
+    }
 }

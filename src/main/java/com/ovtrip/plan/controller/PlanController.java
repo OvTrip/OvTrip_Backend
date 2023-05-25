@@ -42,6 +42,12 @@ public class PlanController {
         }
     }
 
+    @GetMapping
+    public ResponseEntity<?> getPlanByUser(@UserInfo UserInfoDto userInfoDto){
+        List<PlanVo> planVos = planService.getPlanByUser(userInfoDto.getUserId());
+        return ResponseEntity.ok(planVos);
+    }
+
     @PostMapping
     @ApiOperation(value="Plan 생성", notes = "새로운 일정을 생성합니다.")
     public ResponseEntity<?> createPlan(@RequestBody PlanCreateDto planCreateDto, @UserInfo UserInfoDto userInfoDto){

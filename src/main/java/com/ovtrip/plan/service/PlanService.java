@@ -17,4 +17,6 @@ public interface PlanService {
     void createCourse(CourseCreateDto courseCreateDto) throws  Exception;
 
     List<CourseVo> getCourse(CourseGetDto courseGetDto) throws Exception;
+
+    List<PlanVo> getPlanByUser(Long userId);
 }
