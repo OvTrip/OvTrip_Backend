@@ -21,8 +21,8 @@
     </select>
 
     <select id="getCourseList" resultType="courseVo">
-        select course_id, place_name, place_url, address_name, road_address_name,
-               latitude, longitude, course_date, start_time, end_time
+        select course_id, course_date, start_time, end_time, place_name, place_url, address_name, road_address_name,
+               latitude, longitude
         from course
         where plan_id = #{plan_id}
     </select>
@@ -47,7 +47,7 @@
     <select id="getCourse" parameterType="courseGetDto" resultType="courseVo">
         select course_id, course_date, start_time, end_time, place_name, place_url, address_name, road_address_name, latitude, longitude
         from course
-        where plan_id = #{plan_id}
+        where plan_id = #{PlanId}
           and course_date = #{courseDate}
     </select>
 

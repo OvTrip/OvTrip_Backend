@@ -7,12 +7,14 @@ import java.util.List;
 @Getter
 @ToString
 @AllArgsConstructor     //Create Full Parameter Constructor
+@Builder
+@NoArgsConstructor
 public class PlanVo {
-    private final int planId;
-    private final String planTitle;
-    private final String region;
-    private final String startDate;
-    private final String endDate;
-//    private final List<CourseVo> courseList;
-//    private final List<ParticipantsVo> participantList;
+    private int planId;
+    private String planTitle;
+    private String region;
+    private String startDate;
+    private String endDate;
+    private List<CourseVo> courseList;
+    private List<ParticipantsVo> participantList;
 }

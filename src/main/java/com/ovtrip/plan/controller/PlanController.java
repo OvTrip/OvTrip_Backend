@@ -60,13 +60,6 @@ public class PlanController {
         }
     }
 
-    private String course_date;
-    private String place_name;
-    private String place_url;
-    private String address_name;
-    private String road_address_name;
-    private String latitude;
-    private String longitude;
     @PostMapping(value="/{planId}/course")
     @ApiOperation(value = "Course 생성", notes="날짜별 일정을 저장합니다.")
     public ResponseEntity<?> createCourse(@PathVariable Long planId, @RequestBody PlanDto planDto){
@@ -91,10 +84,13 @@ public class PlanController {
         }
     }
 
-    @GetMapping(value = "course")
+    @GetMapping(value = "/{planId}/course/{courseDate}")
     @ApiOperation(value="Course 조회", notes="날짜별 일정을 가져옵니다.")
-    public ResponseEntity<?> getCourse(@RequestBody CourseGetDto courseGetDto){
+    public ResponseEntity<?> getCourse(@PathVariable Long planId, @PathVariable String courseDate){
         try{
+            CourseGetDto courseGetDto = new CourseGetDto();
+            courseGetDto.setPlanId(planId);
+            courseGetDto.setCourseDate(courseDate);
             List<CourseVo> courseVo = planService.getCourse(courseGetDto);
             return new ResponseEntity<>(courseVo, HttpStatus.OK);
         } catch (Exception e) {
