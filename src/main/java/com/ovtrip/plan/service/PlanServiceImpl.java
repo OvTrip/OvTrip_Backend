@@ -1,10 +1,15 @@
 package com.ovtrip.plan.service;
 
+import com.ovtrip.plan.model.dto.CourseCreateDto;
+import com.ovtrip.plan.model.dto.CourseGetDto;
 import com.ovtrip.plan.model.dto.PlanCreateDto;
+import com.ovtrip.plan.model.vo.CourseVo;
 import com.ovtrip.plan.model.vo.PlanVo;
 import com.ovtrip.plan.model.mapper.PlanMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -32,4 +37,15 @@ public class PlanServiceImpl implements PlanService{
     public void deletePlan(int planId) throws Exception {
 
     }
+
+    @Override
+    public void createCourse(CourseCreateDto courseCreateDto) throws Exception {
+        planMapper.createCourse(courseCreateDto);
+    }
+
+    @Override
+    public List<CourseVo> getCourse(CourseGetDto courseGetDto) throws Exception {
+        return planMapper.getCourse(courseGetDto);
+    }
+
 }

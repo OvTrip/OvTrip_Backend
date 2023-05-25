@@ -38,4 +38,17 @@
         values (#{userId}, #{startDate}, #{endDate}, #{region}, now())
     </insert>
 
+    <insert id="createCourse" parameterType="courseCreateDto">
+        insert into (plan_id, course_date, start_time, end_time, place_name, place_url, address_name, road_address_name, latitude, longitude)
+        values (#{planId}, #{courseDate}, #{startTime}, #{endTime}, #{placeName}, #{placeUrl}, #{addressName}, #{roadAddressName}, #{latitude}, #{longitude})
+        ON DUPLICATE KEY UPDATE course_id =#{courseId};
+    </insert>
+
+    <select id="getCourse" parameterType="courseGetDto" resultType="courseVo">
+        select course_id, course_date, start_time, end_time, place_name, place_url, address_name, road_address_name, latitude, longitude
+        from course
+        where plan_id = #{plan_id}
+          and course_date = #{courseDate}
+    </select>
+
 </mapper>
