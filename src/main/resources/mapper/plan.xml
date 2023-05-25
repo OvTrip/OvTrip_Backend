@@ -51,8 +51,8 @@
           and course_date = #{courseDate}
     </select>
 
-    <select id="getPlanByUser" parameterType="long" resultType="planVo">
-        select plan_id, plan_title, region,start_date, end_date
+    <select id="getPlanByUser" parameterType="long" resultType="planUserVo">
+        select plan_id, plan_title, region, start_date, end_date
         from plan
         where user_id = #{userId}
     </select>

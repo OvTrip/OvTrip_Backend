@@ -4,6 +4,7 @@ import com.ovtrip.plan.model.dto.CourseCreateDto;
 import com.ovtrip.plan.model.dto.CourseGetDto;
 import com.ovtrip.plan.model.dto.PlanCreateDto;
 import com.ovtrip.plan.model.vo.CourseVo;
+import com.ovtrip.plan.model.vo.PlanUserVo;
 import com.ovtrip.plan.model.vo.PlanVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.jdbc.SQL;
@@ -18,5 +19,5 @@ public interface PlanMapper {
     List<CourseVo> getCourse(CourseGetDto courseGetDto) throws SQLException;
     void createCourse(CourseCreateDto courseCreateDto) throws  SQLException;
 
-    List<PlanVo> getPlanByUser(Long userId);
+    List<PlanUserVo> getPlanByUser(Long userId);
 }

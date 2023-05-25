@@ -7,6 +7,7 @@ import com.ovtrip.plan.model.dto.CourseGetDto;
 import com.ovtrip.plan.model.dto.PlanCreateDto;
 import com.ovtrip.plan.model.dto.PlanDto;
 import com.ovtrip.plan.model.vo.CourseVo;
+import com.ovtrip.plan.model.vo.PlanUserVo;
 import com.ovtrip.plan.model.vo.PlanVo;
 import com.ovtrip.plan.service.PlanService;
 import io.swagger.annotations.Api;
@@ -44,7 +45,8 @@ public class PlanController {
 
     @GetMapping
     public ResponseEntity<?> getPlanByUser(@UserInfo UserInfoDto userInfoDto){
-        List<PlanVo> planVos = planService.getPlanByUser(userInfoDto.getUserId());
+        List<PlanUserVo> planVos = planService.getPlanByUser(userInfoDto.getUserId());
+        System.out.println(userInfoDto.getUserId());
         return ResponseEntity.ok(planVos);
     }
 
