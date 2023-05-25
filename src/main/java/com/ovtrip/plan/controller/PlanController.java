@@ -2,10 +2,7 @@ package com.ovtrip.plan.controller;
 
 import com.ovtrip.global.resolver.userinfo.UserInfo;
 import com.ovtrip.global.resolver.userinfo.UserInfoDto;
-import com.ovtrip.plan.model.dto.CourseCreateDto;
-import com.ovtrip.plan.model.dto.CourseGetDto;
-import com.ovtrip.plan.model.dto.PlanCreateDto;
-import com.ovtrip.plan.model.dto.PlanDto;
+import com.ovtrip.plan.model.dto.*;
 import com.ovtrip.plan.model.vo.CourseVo;
 import com.ovtrip.plan.model.vo.PlanUserVo;
 import com.ovtrip.plan.model.vo.PlanVo;
@@ -98,6 +95,12 @@ public class PlanController {
         } catch (Exception e) {
             return exceptionHandling(e);
         }
+    }
+
+    @PostMapping("/title")
+    public ResponseEntity<?> updatePlanTitle(@RequestBody PlanTitleDto planTitleDto){
+        planService.updatePlanTitle(planTitleDto);
+        return ResponseEntity.ok(planTitleDto.getPlanId());
     }
 
     private ResponseEntity<String> exceptionHandling(Exception e) {

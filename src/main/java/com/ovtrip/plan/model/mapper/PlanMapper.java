@@ -3,6 +3,7 @@ package com.ovtrip.plan.model.mapper;
 import com.ovtrip.plan.model.dto.CourseCreateDto;
 import com.ovtrip.plan.model.dto.CourseGetDto;
 import com.ovtrip.plan.model.dto.PlanCreateDto;
+import com.ovtrip.plan.model.dto.PlanTitleDto;
 import com.ovtrip.plan.model.vo.CourseVo;
 import com.ovtrip.plan.model.vo.PlanUserVo;
 import com.ovtrip.plan.model.vo.PlanVo;
@@ -20,4 +21,6 @@ public interface PlanMapper {
     void createCourse(CourseCreateDto courseCreateDto) throws  SQLException;
 
     List<PlanUserVo> getPlanByUser(Long userId);
+
+    void updatePlanTitle(PlanTitleDto planTitleDto);
 }
