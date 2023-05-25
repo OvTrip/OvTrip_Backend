@@ -73,7 +73,7 @@ public class PlanController {
                         .courseDate(planDto.getVisitList().get(i).getCourse_date())
                         .addressName(planDto.getVisitList().get(i).getAddress_name())
                         .roadAddressName(planDto.getVisitList().get(i).getRoad_address_name())
-                        .placeName(planDto.getVisitList().get(i).getPlace_name())
+                        .placeName(planDto.getVisitList().get(i).getPlaceName())
                         .placeUrl(planDto.getVisitList().get(i).getPlace_url())
                         .latitude(planDto.getVisitList().get(i).getLatitude())
                         .longitude(planDto.getVisitList().get(i).getLongitude())

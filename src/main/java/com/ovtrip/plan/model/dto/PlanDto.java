@@ -19,7 +19,7 @@ public class PlanDto {
     @Builder
     public static class CourseDto {
         private String course_date;
-        private String place_name;
+        private String placeName;
         private String place_url;
         private String address_name;
         private String road_address_name;
