@@ -1,92 +1,75 @@
-# EnjoyTrip_Framework_서울_10_김기정_김지은
+# 간편한 여행 계획 관리 🧳 OvTrip ✈️
 
+## ℹ️ 프로젝트 소개
 
+### "편리한 여행 계획 웹사이트가 있었으면 좋겠다!”
 
-## Getting started
+OvTrip은 편리하게 여행 계획을 짤 수 있는 **여행 계획 관리 플랫폼**입니다!
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+👉 여행 계획을 편리하고 쉽게 작성하고 싶으신 분 
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+👉 친구와 함께 계획을 작성하고 싶으신 분
 
-## Add your files
+👉 여행 계획을 관리하기가 귀찮으신 분
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### OvTrip을 통해 쉽고 빠르게 여행 계획을 작성해보세요!
 
-```
-cd existing_repo
-git remote add origin https://lab.ssafy.com/jxixeun/enjoytrip_framework_s10_team3.git
-git branch -M master
-git push -uf origin master
-```
+### ⏱ 프로젝트 기간
 
-## Integrate with your tools
+> 2023.05 ~ 진행중
 
-- [ ] [Set up project integrations](https://lab.ssafy.com/jxixeun/enjoytrip_framework_s10_team3/-/settings/integrations)
+## 🔧 기술 스택
 
-## Collaborate with your team
+  
+  ### [BE]
+  <div style="display: flex; align-items: flex-start;">
+<img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=SpringBoot&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Spring Cloud-6DB33F?style=flat-square&logo=SpringCloud&logoColor=white"/>
+    <br>
+<img src="https://img.shields.io/badge/Mysql-4479A1?style=flat-square&logo=MySql&logoColor=white"/>
+  <img src="https://img.shields.io/badge/MyBatis-B5281A?style=flat-square&logo=MyBatis&logoColor=white" />
+  <img src="https://img.shields.io/badge/Amazon RDS-527FFF?style=flat-square&logo=amazon-rds&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Swagger-85EA2D?style=flat-square&logo=Swagger&logoColor=white" />
+  <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=JSON%20web%20tokens&logoColor=white" />
+  </div>
+  
+  ### [FE]
+  <div style="display: flex; align-items: flex-start;">
+  <img src="https://img.shields.io/badge/vue.js-4FC08D?style=flat-square&logo=vue.js&logoColor=white">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black"/>
+</div>
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+## 💻 1. 화면 설계도
 
-## Test and Deploy
+![all_images](https://github.com/OvTrip/OvTrip_Backend/assets/102013524/af402e32-8bd8-4485-9263-fad554533217)
 
-Use the built-in continuous integration in GitLab.
+## 🧑 2. Use Case Diagram
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### ❗회색은 추후에 구현할 기능입니다.
 
-***
+![usecase drawio](https://github.com/OvTrip/OvTrip_Backend/assets/102013524/af70f6c4-1f14-4f6a-a62b-d92dde02f1a9)
 
-# Editing this README
+## 📉 3. ERD
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+![erd](https://github.com/OvTrip/OvTrip_Backend/assets/102013524/9a1bf466-27fd-431d-942b-8be3eb67dec7)
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## 📈 4. Class Diagram
 
-## Name
-Choose a self-explaining name for your project.
+![Class_Diagram](https://github.com/OvTrip/OvTrip_Backend/assets/102013524/ed7697f9-2ef4-4d62-93ef-c99c1b07e87f)
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+<h2>🧑‍💻 팀원 소개</h2>
+  <table>
+    <tr>
+      <td align="center"><img src="https://github.com/jxixeun.png" width="160"></td>
+      <td align="center"><img src="https://github.com/flyforme2016.png" width="160"></td>
+    </tr>
+    <tr>
+      <td align="center">김지은</td>
+      <td align="center">김기정</td>
+    </tr>
+    <tr>
+      <td align="center"><a href="https://github.com/jxixeun" target="_blank">@jxixeun</a></td>
+      <td align="center"><a href="https://github.com/flyforme2016" target="_blank" width="160">@flyforme2016</a></td>
+    </tr>
+  </table>
